@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneBaseState : MonoBehaviour {
+public class SceneBaseState : FSM.BaseState<SceneManagerCustom> {
 
-    public virtual void OnEnter(System.Action callback = null)
+    public string SceneName = "";
+    public override void OnEnter(System.Action callback = null)
     {
+        base.OnEnter(callback);
     }
 
-    public virtual void OnExit(System.Action callback = null)
+    public override void OnExit(System.Action callback = null)
     {
+        base.OnExit(callback);
     }
 
     public void LoadLevelAsync(string _sceneName, System.Action callback = null)
