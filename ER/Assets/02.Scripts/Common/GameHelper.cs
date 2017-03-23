@@ -19,17 +19,17 @@ public class GameHelper : MonoBehaviour{
             string path = string.Format("Unit/{0}/{1}", unitinfo.playertype.ToString(), unitinfo.modelname);
             switch (unitinfo.playertype)
             {
-                case PlayerState.Hero:
+                case UnitType.Hero:
                     UnitBase.name = "HERO_" + id;
                     //UnitBase.AddComponent<HeroBase>().FirstInit(id);
                     break;
 
-                case PlayerState.Enemy:
+                case UnitType.Enemy:
                     UnitBase.name = "ENEMY_" + id;
                     //UnitBase.AddComponent<EnemyBase>().FirstInit(id);
                     break;
 
-                case PlayerState.Boss:
+                case UnitType.Boss:
                     UnitBase.name = "BOSS_" + id;
                     //UnitBase.AddComponent<EnemyBase>().FirstInit(id);
                     break;
