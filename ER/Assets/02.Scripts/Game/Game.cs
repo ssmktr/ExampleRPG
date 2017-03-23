@@ -30,37 +30,3 @@ public class Game : MonoBehaviour {
         GameHelper.UnitLoad(3001, UnitGroup, RandPos, (obj) => { }, 3);
     }
 }
-
-public enum AniState
-{
-    Wait = 0,
-    Walk,
-    Damage,
-    Dead,
-    Attack,
-}
-
-public enum PlayerState
-{
-    Hero = 0,
-    Enemy,
-    Boss,
-}
-
-public enum FSMKey
-{
-    None = 0,
-    Move,
-    Saw,
-    Meet,
-    NoHp,
-}
-
-public enum FSMValue
-{
-    None = 0,
-    Move,
-    Follow,
-    Attack,
-    Death,
-}

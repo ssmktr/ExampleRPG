@@ -33,7 +33,7 @@ public class UnitInfo
 {
     public int id = 0;
     public string modelname = "";
-    public PlayerState playertype = PlayerState.Hero;
+    public UnitType playertype = UnitType.Hero;
     public float collidersize = 0f;
     public float movespeed = 0;
     public float hp = 0f;
