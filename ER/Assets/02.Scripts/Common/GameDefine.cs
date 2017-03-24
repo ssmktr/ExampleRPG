@@ -79,3 +79,10 @@ public enum GAME_MODE
     None = 0,
     Game_Stage = 1,
 }
+
+public enum UIPANELTYPE
+{
+    NONE = 0,
+    MAIN,
+    SINGLEGAMEREADY,
+}
