@@ -32,6 +32,6 @@ public class StartState : SceneBaseState {
 
     void NextScene()
     {
-
+        SceneManagerCustom.Instance.ActionEvent(_ACTION.GO_MAIN);
     }
 }

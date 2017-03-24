@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SceneBaseState : FSM.BaseState<SceneManagerCustom> {
 
@@ -26,12 +25,12 @@ public class SceneBaseState : FSM.BaseState<SceneManagerCustom> {
         yield return new WaitForSeconds(0.5f);
 
         // 같은 씬인지 체크
-        if (SceneManager.GetActiveScene().name == _sceneName)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == _sceneName)
             GameHelper.DevDebugLog("같은 씬 입니다", LOGSTATE.WARRING);
         else
         {
             Application.backgroundLoadingPriority = ThreadPriority.High;
-            AsyncOperation async = SceneManager.LoadSceneAsync(_sceneName, LoadSceneMode.Single);
+            AsyncOperation async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(_sceneName);
 
             while (!async.isDone)
             {

@@ -190,7 +190,7 @@ public class UnitBase : MonoBehaviour {
     protected virtual bool LoadingComplete()
     {
         ComputeComponents();
-        SetupForGameMode(GAME_MODE.SingleGame);
+        SetupForGameMode(GAME_MODE.Game_Stage);
 
         if (LoadingCompleteCallBack != null)
             LoadingCompleteCallBack();

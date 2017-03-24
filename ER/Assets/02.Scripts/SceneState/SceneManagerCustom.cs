@@ -15,9 +15,14 @@ public enum _ACTION
     GO_GAME,
 }
 
-public partial class SceneManagerCustom : MonoBehaviour
+public partial class SceneManagerCustom : Singleton<SceneManagerCustom>
 {
     FSM.FSM<_ACTION, _STATE, SceneManagerCustom> FSM = null;
+
+    private void Start()
+    {
+        Init_FSM();
+    }
 
     void Init_FSM()
     {
@@ -30,6 +35,7 @@ public partial class SceneManagerCustom : MonoBehaviour
     {
         FSM.AddState(_STATE.START, gameObject.AddComponent<StartState>());
         FSM.AddState(_STATE.MAIN, gameObject.AddComponent<MainState>());
+        FSM.AddState(_STATE.GAME, gameObject.AddComponent<Game_Stage01>());
 
         FSM.RegistEvent(_STATE.START, _ACTION.GO_MAIN, _STATE.MAIN);
 

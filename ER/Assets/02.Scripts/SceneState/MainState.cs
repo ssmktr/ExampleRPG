@@ -17,18 +17,23 @@ public class MainState : SceneBaseState {
     public override void OnExit(Action callback = null)
     {
         base.OnExit(callback);
+
+        CameraSetting();
+
+        Debug.Log("Enter Main");
+        EnterMain();
     }
 
-    private void OnLevelWasLoaded(int level)
-    {
-        if (SceneManager.GetActiveScene().name == SceneName)
-        {
-            CameraSetting();
+    //void OnLevelWasLoaded(int level)
+    //{
+    //    if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneName)
+    //    {
+    //        CameraSetting();
 
-            Debug.Log("Enter Main");
-            EnterMain();
-        }
-    }
+    //        Debug.Log("Enter Main");
+    //        EnterMain();
+    //    }
+    //}
 
     void EnterMain()
     {
@@ -38,7 +43,6 @@ public class MainState : SceneBaseState {
     void CameraSetting()
     {
         Screen.SetResolution(1280, 720, true);
-
     }
 }
 
