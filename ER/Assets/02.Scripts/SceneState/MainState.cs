@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainState : SceneBaseState {
 
@@ -20,7 +19,6 @@ public class MainState : SceneBaseState {
 
         CameraSetting();
 
-        Debug.Log("Enter Main");
         EnterMain();
     }
 
@@ -37,7 +35,6 @@ public class MainState : SceneBaseState {
 
     void EnterMain()
     {
-
     }
 
     void CameraSetting()

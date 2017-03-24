@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Game_Stage01 : SceneBaseState
+public class GameState : SceneBaseState
 {
     public override void OnEnter(Action callback = null)
     {
+        SceneName = "Game01";
         base.OnEnter(callback);
 
-        Debug.Log("Enter Game");
+        LoadLevelAsync(SceneName);
     }
 
     //private void OnLevelWasLoaded(int level)
