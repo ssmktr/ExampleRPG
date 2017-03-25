@@ -85,4 +85,5 @@ public enum UIPANELTYPE
     NONE = 0,
     MAIN,
     SINGLEGAMEREADY,
+    INGAMEHUD,
 }

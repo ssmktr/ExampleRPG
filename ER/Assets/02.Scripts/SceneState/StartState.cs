@@ -28,6 +28,9 @@ public class StartState : SceneBaseState {
         {
             NextSceneCheck = true;
 
+            // 유닛 데이터 불러오기
+            DataManager.Instance.AllLoadTable();
+
             Invoke("NextScene", 0.5f);
         }
     }

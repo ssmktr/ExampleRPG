@@ -19,7 +19,6 @@ public class cMain : MonoBehaviour {
 
         if (_UICamera != null)
         {
-            UIManager.Instance.ListUIPanel.Clear();
             UIManager.Instance.AddUIPanel(_UICamera.transform.FindChild("MainPanel").GetComponent<MainPanel>(), UIPANELTYPE.MAIN);
             UIManager.Instance.AddUIPanel(_UICamera.transform.FindChild("SingleGameReadyPanel").GetComponent<SingleGameReadyPanel>(), UIPANELTYPE.SINGLEGAMEREADY);
 
@@ -28,8 +27,6 @@ public class cMain : MonoBehaviour {
 
             // 메인 패널을 켠다
             UIManager.Instance.Open(UIPANELTYPE.MAIN);
-
-            Debug.Log(111);
         }
     }
 }

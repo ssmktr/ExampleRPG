@@ -52,10 +52,6 @@ public class UIManager : Singleton<UIManager> {
     // 메인 패너을 제외한 모든 패널을 삭제
     public void AllUIPanelDelete()
     {
-        for (int i = 0; i < ListUIPanel.Count; ++i)
-        {
-            ListUIPanel[i].Close();
-        }
         ListUIPanel.Clear();
     }
 
