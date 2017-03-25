@@ -28,6 +28,8 @@ public class cMain : MonoBehaviour {
 
             // 메인 패널을 켠다
             UIManager.Instance.Open(UIPANELTYPE.MAIN);
+
+            Debug.Log(111);
         }
     }
 }

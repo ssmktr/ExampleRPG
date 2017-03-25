@@ -17,12 +17,24 @@ public class GameManager : Singleton<GameManager> {
         switch (type)
         {
             case UnitType.None:
+                ListHero.Clear();
+                ListEnemy.Clear();
+                ListBoss.Clear();
                 AllUnitDic.Clear();
                 break;
 
             case UnitType.Hero:
+                ListHero.Clear();
+                if (AllUnitDic.ContainsKey(type))
+                    AllUnitDic.Remove(type);
+                break;
             case UnitType.Enemy:
+                ListEnemy.Clear();
+                if (AllUnitDic.ContainsKey(type))
+                    AllUnitDic.Remove(type);
+                break;
             case UnitType.Boss:
+                ListBoss.Clear();
                 if (AllUnitDic.ContainsKey(type))
                     AllUnitDic.Remove(type);
                 break;
@@ -51,7 +63,6 @@ public class GameManager : Singleton<GameManager> {
     // 모든 리스트 딕셔너리에 추가
     public void AllUnitDicAdd()
     {
-        AllUnitClear();
         if (ListHero.Count > 0)
             AllUnitDic.Add(UnitType.Hero, ListHero);
 

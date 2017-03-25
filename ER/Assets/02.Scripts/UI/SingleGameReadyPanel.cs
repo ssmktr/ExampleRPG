@@ -42,6 +42,37 @@ public class SingleGameReadyPanel : UIBasePanel {
         BossCntLbl.text = BossCnt.ToString("N0");
     }
 
+    void SetInGameDatas()
+    {
+        GameManager.Instance.AllUnitClear();
+
+        for (int i = 0; i < 3; ++i)
+        {
+            UnitInfo unitinfo = new UnitInfo();
+            unitinfo.Set(DataManager.Instance.GetUnitInfo(1001));
+
+            GameManager.Instance.AddUnit(UnitType.Hero, unitinfo);
+        }
+
+        for (int i = 0; i < EnemyCnt; ++i)
+        {
+            UnitInfo unitinfo = new UnitInfo();
+            unitinfo.Set(DataManager.Instance.GetUnitInfo(2001));
+
+            GameManager.Instance.AddUnit(UnitType.Enemy, unitinfo);
+        }
+
+        for (int i = 0; i < BossCnt; ++i)
+        {
+            UnitInfo unitinfo = new UnitInfo();
+            unitinfo.Set(DataManager.Instance.GetUnitInfo(3001));
+
+            GameManager.Instance.AddUnit(UnitType.Boss, unitinfo);
+        }
+
+        GameManager.Instance.AllUnitDicAdd();
+    }
+
     void OnClickAddEnemy(GameObject sender)
     {
         EnemyCnt++;
@@ -80,6 +111,11 @@ public class SingleGameReadyPanel : UIBasePanel {
 
     void OnClickStartSingleGame(GameObject sender)
     {
+        // 모든 유닛 데이터 저장
+        SetInGameDatas();
+
+        UIManager.Instance.AllUIPanelDelete();
+
         SceneManagerCustom.Instance.ActionEvent(_ACTION.GO_GAME);
     }
 

@@ -34,6 +34,8 @@ public class StartState : SceneBaseState {
 
     void NextScene()
     {
+        UIManager.Instance.AllUIPanelDelete();
+
         SceneManagerCustom.Instance.ActionEvent(_ACTION.GO_MAIN);
     }
 }

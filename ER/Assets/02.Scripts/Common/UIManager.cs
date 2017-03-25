@@ -54,17 +54,9 @@ public class UIManager : Singleton<UIManager> {
     {
         for (int i = 0; i < ListUIPanel.Count; ++i)
         {
-            if (ListUIPanel[i].MyPanelType != UIPANELTYPE.MAIN)
-                ListUIPanel[i].Close();
+            ListUIPanel[i].Close();
         }
-
-        for (int i = 0; i < ListUIPanel.Count;)
-        {
-            if (ListUIPanel[i].MyPanelType != UIPANELTYPE.MAIN)
-                ListUIPanel.RemoveAt(i);
-            else
-                ++i;
-        }
+        ListUIPanel.Clear();
     }
 
     // 모든 패널을 숨김
