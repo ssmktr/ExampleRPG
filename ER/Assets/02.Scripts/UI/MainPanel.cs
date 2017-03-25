@@ -9,7 +9,6 @@ public class MainPanel : UIBasePanel {
 
     public override void Init()
     {
-        _MyPanelType = UIPANELTYPE.MAIN;
         base.Init();
 
         TitleLbl.text = "메인 패널";

@@ -6,7 +6,7 @@ public class UIBasePanel : MonoBehaviour {
 
     protected object[] parameters;
     protected UIPANELTYPE _MyPanelType = UIPANELTYPE.NONE;
-    public UIPANELTYPE GetMyPanelType { get { return _MyPanelType; } }
+    public UIPANELTYPE MyPanelType { set { _MyPanelType = value; } get { return _MyPanelType; } }
 
     private void Awake()
     {

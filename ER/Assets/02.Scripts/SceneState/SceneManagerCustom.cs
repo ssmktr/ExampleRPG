@@ -11,6 +11,7 @@ public enum _STATE
 
 public enum _ACTION
 {
+    GO_START,
     GO_MAIN,
     GO_GAME,
 }
@@ -31,6 +32,9 @@ public class SceneManagerCustom : Singleton<SceneManagerCustom>
         FSM.AddState(_STATE.START, gameObject.AddComponent<StartState>());
         FSM.AddState(_STATE.MAIN, gameObject.AddComponent<MainState>());
         FSM.AddState(_STATE.GAME, gameObject.AddComponent<GameState>());
+
+        FSM.RegistEvent(_STATE.MAIN, _ACTION.GO_START, _STATE.START);
+        FSM.RegistEvent(_STATE.GAME, _ACTION.GO_START, _STATE.START);
 
         FSM.RegistEvent(_STATE.START, _ACTION.GO_MAIN, _STATE.MAIN);
 

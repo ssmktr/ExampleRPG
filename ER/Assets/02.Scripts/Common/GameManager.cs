@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
 
+    public bool IsGameStart = false;
+
     public Dictionary<UnitType, List<UnitInfo>> AllUnitDic = new Dictionary<UnitType, List<UnitInfo>>();
     List<UnitInfo> ListHero = new List<UnitInfo>();
     List<UnitInfo> ListEnemy = new List<UnitInfo>();
