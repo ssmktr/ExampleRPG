@@ -21,17 +21,17 @@ public class GameHelper : MonoBehaviour{
             {
                 case UnitType.Hero:
                     UnitBase.name = "HERO_" + id;
-                    //UnitBase.AddComponent<HeroBase>().FirstInit(id);
+                    UnitBase.AddComponent<Pc>();
                     break;
 
                 case UnitType.Enemy:
                     UnitBase.name = "ENEMY_" + id;
-                    //UnitBase.AddComponent<EnemyBase>().FirstInit(id);
+                    UnitBase.AddComponent<Enemy>();
                     break;
 
                 case UnitType.Boss:
                     UnitBase.name = "BOSS_" + id;
-                    //UnitBase.AddComponent<EnemyBase>().FirstInit(id);
+                    UnitBase.AddComponent<Enemy>();
                     break;
             }
 
@@ -49,6 +49,13 @@ public class GameHelper : MonoBehaviour{
 
             // 포지션 적용
             UnitBase.transform.localPosition = new Vector3(pos.x, pos.y + col.radius, pos.z);
+
+            // 스크립트 세팅
+            Unit unitBase = UnitBase.GetComponent<Unit>();
+            if (unitBase != null)
+            {
+                unitBase.Init(unitinfo);
+            }
 
             // 콜백
             if (callback != null)

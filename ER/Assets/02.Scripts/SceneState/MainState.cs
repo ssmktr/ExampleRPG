@@ -22,17 +22,6 @@ public class MainState : SceneBaseState {
         EnterMain();
     }
 
-    //void OnLevelWasLoaded(int level)
-    //{
-    //    if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == SceneName)
-    //    {
-    //        CameraSetting();
-
-    //        Debug.Log("Enter Main");
-    //        EnterMain();
-    //    }
-    //}
-
     void EnterMain()
     {
     }
