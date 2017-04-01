@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class cGame : MonoBehaviour {
     UICamera _UICamera = null;
+    InGameHUDPanel hudPanel = null;
+
+    public UISlider HpProgressBar;
 
     private void Awake()
     {
@@ -23,9 +26,11 @@ public class cGame : MonoBehaviour {
             GameInfo.name = "GameInfo/SingleGameInfo";
             GameInfo.transform.localPosition = Vector3.zero;
             GameInfo.transform.localScale = Vector3.one;
-            GameInfo.GetComponent<GameInfoBase>().Init();
 
-            UIManager.Instance.AddUIPanel(_UICamera.transform.FindChild("InGameHUDPanel").GetComponent<InGameHUDPanel>(), UIPANELTYPE.INGAMEHUD);
+            hudPanel = _UICamera.transform.FindChild("InGameHUDPanel").GetComponent<InGameHUDPanel>();
+            UIManager.Instance.AddUIPanel(hudPanel, UIPANELTYPE.INGAMEHUD);
+
+            GameInfo.GetComponent<GameInfoBase>().Init(this);
 
             // 일단 모든 패널을 숨긴다
             UIManager.Instance.AllUIPanelHide();
@@ -35,6 +40,17 @@ public class cGame : MonoBehaviour {
         }
     }
 
+    // 체력 게이지 생성
+    public void CreateHpSlider(Transform parent, string name)
+    {
+        if (hudPanel != null)
+        {
+            GameObject hpBar = (GameObject)Instantiate(HpProgressBar.gameObject);
+            hpBar.transform.parent = hudPanel.transform;
+            hpBar.transform.localScale = Vector3.one;
+            hpBar.GetComponent<HpProgressBar>().Init(parent, name);
+        }
+    }
 
     private void OnGUI()
     {

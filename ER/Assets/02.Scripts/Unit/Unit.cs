@@ -41,7 +41,7 @@ public class Unit : MonoBehaviour {
     public byte _TeamGroup = 0;
     public int Pc_uid = 0;
     public int AttackType = 0; // 1:근딜, 2:원딜, 3:마법
-    public Transform _MyTransform = null;
+    public Transform _MyTransform = null, _HpParent = null;
 
     int CurCombo = 0;
     public bool IsAttack = false;
@@ -76,6 +76,13 @@ public class Unit : MonoBehaviour {
 
         _Animation = GetComponentInChildren<Animation>();
         _NavMeshAgent = GetComponentInChildren<NavMeshAgent>();
+        _NavMeshAgent.speed = _UnitInfo.movespeed;
+
+        _HpParent = transform.FindChild("HpParent");
+        //if (_UnitInfo.playertype == UnitType.Boss)
+        //    _HpParent.transform.localPosition = new Vector3(0, 1/_UnitInfo.collidersize + 1, 0);
+        //else
+        //    _HpParent.transform.localPosition = new Vector3(0, _UnitInfo.collidersize + 1, 0);
     }
 
     // 이동
