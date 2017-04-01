@@ -79,10 +79,7 @@ public class Unit : MonoBehaviour {
         _NavMeshAgent.speed = _UnitInfo.movespeed;
 
         _HpParent = transform.FindChild("HpParent");
-        //if (_UnitInfo.playertype == UnitType.Boss)
-        //    _HpParent.transform.localPosition = new Vector3(0, 1/_UnitInfo.collidersize + 1, 0);
-        //else
-        //    _HpParent.transform.localPosition = new Vector3(0, _UnitInfo.collidersize + 1, 0);
+        _HpParent.transform.localPosition = new Vector3(0, 1 / transform.localScale.y + _UnitInfo.collidersize, 0);
     }
 
     // 이동
