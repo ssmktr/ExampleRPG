@@ -41,7 +41,7 @@ public class cGame : MonoBehaviour {
     }
 
     // 체력 게이지 생성
-    public void CreateHpSlider(Transform parent, string name)
+    public void CreateHpSlider(Unit unit, Transform parent, string name)
     {
         if (hudPanel != null)
         {
@@ -49,6 +49,7 @@ public class cGame : MonoBehaviour {
             hpBar.transform.parent = hudPanel.transform;
             hpBar.transform.localScale = Vector3.one;
             hpBar.GetComponent<HpProgressBar>().Init(parent, name);
+            unit._HpProgressBar = hpBar.GetComponent<HpProgressBar>();
         }
     }
 

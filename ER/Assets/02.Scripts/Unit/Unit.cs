@@ -52,6 +52,9 @@ public class Unit : MonoBehaviour {
 
     protected UnitInfo _UnitInfo = null;
 
+    // 체력 게이지
+    public HpProgressBar _HpProgressBar = null;
+
     // 애니메이션 정보
     Animation _Animation = null;
     public Animation GetAnimation

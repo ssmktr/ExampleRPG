@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Pc : Unit {
 
+    public override void Init(UnitInfo unitinfo)
+    {
+        base.Init(unitinfo);
+    }
+
     private void Update()
     {
         InputControl();
@@ -43,7 +48,6 @@ public class Pc : Unit {
         {
             transform.Rotate(Vector3.up * Time.deltaTime * 120);
         }
-
     }
 
     // 픽킹

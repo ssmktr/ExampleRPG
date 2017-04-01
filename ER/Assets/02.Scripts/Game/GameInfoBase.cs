@@ -20,7 +20,7 @@ public class GameInfoBase : MonoBehaviour {
 
         // 체력바 생성
         if (game != null)
-            game.CreateHpSlider(hero.GetComponent<Unit>()._HpParent, hero.name);
+            game.CreateHpSlider(hero.GetComponent<Unit>(), hero.GetComponent<Unit>()._HpParent, hero.name);
 
         Vector3 RandPos = Vector3.zero;
         if (GameManager.Instance.AllUnitDic.ContainsKey(UnitType.Enemy))
@@ -32,7 +32,9 @@ public class GameInfoBase : MonoBehaviour {
 
                 // 체력바 생성
                 if (game != null)
-                    game.CreateHpSlider(enemy.GetComponent<Unit>()._HpParent, enemy.name);
+                {
+                    game.CreateHpSlider(enemy.GetComponent<Unit>(), enemy.GetComponent<Unit>()._HpParent, enemy.name);
+                }
             }
         }
 
@@ -45,7 +47,7 @@ public class GameInfoBase : MonoBehaviour {
 
                 // 체력바 생성
                 if (game != null)
-                    game.CreateHpSlider(boss.GetComponent<Unit>()._HpParent, boss.name);
+                    game.CreateHpSlider(boss.GetComponent<Unit>(), boss.GetComponent<Unit>()._HpParent, boss.name);
             }
         }
     }
