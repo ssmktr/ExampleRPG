@@ -88,5 +88,14 @@ public class GameHelper : MonoBehaviour{
             }
         }
     }
+
+    // 공격 범위 체크
+    public static bool IsAttackRange(Vector3 dir, Vector3 startPos, Vector3 endPos, float angle, float dist)
+    {
+        if (MathHelper.InAngle(dir, startPos, endPos, angle) && MathHelper.InDistance(startPos, endPos, dist))
+            return true;
+
+        return false;
+    }
 }
 

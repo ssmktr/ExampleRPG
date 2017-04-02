@@ -46,31 +46,30 @@ public class SingleGameReadyPanel : UIBasePanel {
     {
         GameManager.Instance.AllUnitClear();
 
-        for (int i = 0; i < 3; ++i)
-        {
-            UnitInfo unitinfo = new UnitInfo();
-            unitinfo.Set(DataManager.Instance.GetUnitInfo(1001));
+        UnitInfo unitinfo = new UnitInfo();
+        unitinfo.Set(DataManager.Instance.GetUnitInfo(1001));
 
-            GameManager.Instance.AddUnit(UnitType.Hero, unitinfo);
-        }
+        //GameManager.Instance.AddUnit(UnitType.Hero, unitinfo);
 
-        for (int i = 0; i < EnemyCnt; ++i)
-        {
-            UnitInfo unitinfo = new UnitInfo();
-            unitinfo.Set(DataManager.Instance.GetUnitInfo(2001));
+        //for (int i = 0; i < EnemyCnt; ++i)
+        //{
+        //    UnitInfo unitinfo = new UnitInfo();
+        //    unitinfo.Set(DataManager.Instance.GetUnitInfo(2001));
 
-            GameManager.Instance.AddUnit(UnitType.Enemy, unitinfo);
-        }
+        //    GameManager.Instance.AddUnit(UnitType.Enemy, unitinfo);
+        //}
 
-        for (int i = 0; i < BossCnt; ++i)
-        {
-            UnitInfo unitinfo = new UnitInfo();
-            unitinfo.Set(DataManager.Instance.GetUnitInfo(3001));
+        //for (int i = 0; i < BossCnt; ++i)
+        //{
+        //    UnitInfo unitinfo = new UnitInfo();
+        //    unitinfo.Set(DataManager.Instance.GetUnitInfo(3001));
 
-            GameManager.Instance.AddUnit(UnitType.Boss, unitinfo);
-        }
+        //    GameManager.Instance.AddUnit(UnitType.Boss, unitinfo);
+        //}
 
-        GameManager.Instance.AllUnitDicAdd();
+        GameManager.Instance.HeroCnt = 1;
+        GameManager.Instance.EnemyCnt = EnemyCnt;
+        GameManager.Instance.BossCnt = BossCnt;
     }
 
     void OnClickAddEnemy(GameObject sender)

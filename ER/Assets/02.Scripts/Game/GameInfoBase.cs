@@ -12,43 +12,56 @@ public class GameInfoBase : MonoBehaviour {
         _FollowCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<FollowCamera>();
         UnitGroup = transform.FindChild("UnitGroup").transform;
 
-        GameObject hero = null;
-        if (GameManager.Instance.AllUnitDic.ContainsKey(UnitType.Hero))
-            hero = GameHelper.UnitLoad(GameManager.Instance.AllUnitDic[UnitType.Hero][0].id, UnitGroup, Vector3.zero);
-        if (hero != null && _FollowCamera != null)
-            _FollowCamera.Target = hero.transform;
+        for (int i = 0; i < GameManager.Instance.HeroCnt; ++i)
+        {
+            GameObject hero = GameHelper.UnitLoad(1001, UnitGroup, Vector3.zero);
+            if (hero != null && _FollowCamera != null)
+                _FollowCamera.Target = hero.transform;
 
-        // 체력바 생성
-        if (game != null)
-            game.CreateHpSlider(hero.GetComponent<Unit>(), hero.GetComponent<Unit>()._HpParent, hero.name);
+            Unit unit = hero.GetComponent<Unit>();
+            if (unit != null)
+            {
+                // 체력바 생성
+                if (game != null)
+                    game.CreateHpSlider(unit, unit._HpParent, hero.name);
+
+                GameManager.Instance.AddUnit(UnitType.Hero, unit);
+            }
+        }
 
         Vector3 RandPos = Vector3.zero;
-        if (GameManager.Instance.AllUnitDic.ContainsKey(UnitType.Enemy))
+        for (int i = 0; i < GameManager.Instance.EnemyCnt; ++i)
         {
-            for (int i = 0; i < GameManager.Instance.AllUnitDic[UnitType.Enemy].Count; ++i)
-            {
-                RandPos = new Vector3(Random.Range(-35f, 35f), 0f, Random.Range(-35f, 35f));
-                GameObject enemy = GameHelper.UnitLoad(GameManager.Instance.AllUnitDic[UnitType.Enemy][i].id, UnitGroup, RandPos);
+            RandPos = new Vector3(Random.Range(-35f, 35f), 0f, Random.Range(-35f, 35f));
+            GameObject enemy = GameHelper.UnitLoad(2001, UnitGroup, RandPos);
 
+            Unit unit = enemy.GetComponent<Unit>();
+            if (unit != null)
+            {
                 // 체력바 생성
                 if (game != null)
-                {
-                    game.CreateHpSlider(enemy.GetComponent<Unit>(), enemy.GetComponent<Unit>()._HpParent, enemy.name);
-                }
+                    game.CreateHpSlider(unit, unit._HpParent, enemy.name);
+
+                GameManager.Instance.AddUnit(UnitType.Enemy, unit);
             }
         }
 
-        if (GameManager.Instance.AllUnitDic.ContainsKey(UnitType.Boss))
+        for (int i = 0; i < GameManager.Instance.BossCnt; ++i)
         {
-            for (int i = 0; i < GameManager.Instance.AllUnitDic[UnitType.Boss].Count; ++i)
-            {
-                RandPos = new Vector3(Random.Range(-35f, 35f), 0f, Random.Range(-35f, 35f));
-                GameObject boss = GameHelper.UnitLoad(GameManager.Instance.AllUnitDic[UnitType.Boss][i].id, UnitGroup, RandPos, (obj) => { }, 3);
+            RandPos = new Vector3(Random.Range(-35f, 35f), 0f, Random.Range(-35f, 35f));
+            GameObject boss = GameHelper.UnitLoad(3001, UnitGroup, RandPos, (obj) => { }, 3);
 
+            Unit unit = boss.GetComponent<Unit>();
+            if (unit != null)
+            {
                 // 체력바 생성
                 if (game != null)
-                    game.CreateHpSlider(boss.GetComponent<Unit>(), boss.GetComponent<Unit>()._HpParent, boss.name);
+                    game.CreateHpSlider(unit, unit._HpParent, boss.name);
+
+                GameManager.Instance.AddUnit(UnitType.Boss, unit);
             }
         }
+
+        GameManager.Instance.AllUnitDicAdd();
     }
 }

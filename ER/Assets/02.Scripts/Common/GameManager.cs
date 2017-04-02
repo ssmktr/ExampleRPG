@@ -6,10 +6,14 @@ public class GameManager : Singleton<GameManager> {
 
     public bool IsGameStart = false;
 
-    public Dictionary<UnitType, List<UnitInfo>> AllUnitDic = new Dictionary<UnitType, List<UnitInfo>>();
-    List<UnitInfo> ListHero = new List<UnitInfo>();
-    List<UnitInfo> ListEnemy = new List<UnitInfo>();
-    List<UnitInfo> ListBoss = new List<UnitInfo>();
+    public int HeroCnt = 0;
+    public int EnemyCnt = 0;
+    public int BossCnt = 0;
+
+    public Dictionary<UnitType, List<Unit>> AllUnitDic = new Dictionary<UnitType, List<Unit>>();
+    List<Unit> ListHero = new List<Unit>();
+    List<Unit> ListEnemy = new List<Unit>();
+    List<Unit> ListBoss = new List<Unit>();
     public bool IsAutoBattle = false;
 
     public void AllUnitClear(UnitType type = UnitType.None)
@@ -42,20 +46,20 @@ public class GameManager : Singleton<GameManager> {
     }
 
     // 유닛 추가
-    public void AddUnit(UnitType unitType, UnitInfo unitInfo)
+    public void AddUnit(UnitType unitType, Unit unit)
     {
         switch (unitType)
         {
             case UnitType.Hero:
-                ListHero.Add(unitInfo);
+                ListHero.Add(unit);
                 break;
 
             case UnitType.Enemy:
-                ListEnemy.Add(unitInfo);
+                ListEnemy.Add(unit);
                 break;
 
             case UnitType.Boss:
-                ListBoss.Add(unitInfo);
+                ListBoss.Add(unit);
                 break;
         }
     }
